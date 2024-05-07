@@ -20,12 +20,17 @@ export default function Home() {
   const router = useRouter(); // corrected useRouter to router
   const [grandTotal, setGrandTotal] = useState(0);
   const [grandPercentage, setGrandPercentage] = useState(0);
-      const Id=localStorage.getItem("id");
-  const userId=Id
-    console.log(userId);
-    if(!userId){
-    router.push('/signup');
-  }
+const [userId, setUserId] = useState(null); // Initialize user ID
+
+  // Get user ID from localStorage in useEffect to avoid server-side errors
+  useEffect(() => {
+    const storedUserId = localStorage.getItem('id'); // Client-side code
+    if (storedUserId) {
+      setUserId(storedUserId); // Set user ID in state
+    } else {
+      router.push('/signup'); // Redirect to signup if no user ID
+    }
+  }, [router]);
 
   
   
