@@ -67,7 +67,7 @@ const SectionEight = ({ grandTotal, grandPercentage,handleCalculateTotal }) => {
                 <input id="sectionEightTotal" type="text" name="sectionEightTotal" defaultValue="0" /><strong> Total</strong>&nbsp;&nbsp;
                 <input id="getavg8" type="text" name="getavg8" defaultValue="0" /><strong> Percentage</strong>&nbsp;&nbsp;
                 <button className="reset" type="button" onClick={handleReset}>Reset</button>
-                <div class="grandtotal" >
+                <div className="grandtotal" >
                  <input id="grandtotal" type="text" name="grandtotal" value={grandTotal} /><strong> Grandtotal:</strong>&nbsp;&nbsp;
                    
                    <input id="grandavg" type="text" name="grandavg" value={grandPercentage.toFixed(2) + '%'} /><strong> Percentage </strong>&nbsp;&nbsp;
@@ -79,8 +79,8 @@ const SectionEight = ({ grandTotal, grandPercentage,handleCalculateTotal }) => {
                    
                    
                    
-                   <div class="wrap">
-                        <button class="button" name="submit_btn" id="assessmentsubmit"onClick={handleCalculateTotal}>SUBMIT</button>
+                   <div className="wrap">
+                        <button className="button" name="submit_btn" id="assessmentsubmit"onClick={handleCalculateTotal}>SUBMIT</button>
                         </div>  
                    <br/><br/> <br/><br/>
                    
