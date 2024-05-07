@@ -20,12 +20,7 @@ export default function Home() {
   const router = useRouter(); // corrected useRouter to router
   const [grandTotal, setGrandTotal] = useState(0);
   const [grandPercentage, setGrandPercentage] = useState(0);
-  useEffect(()=>{  const userId=localStorage.getItem("id")
-  console.log(userId);},[])
 
-  if(!userId){
-    router.push('/signup');
-  }
   
   
   const handleCalculateTotal = async(event) => { // added event parameter
@@ -44,11 +39,22 @@ export default function Home() {
     setGrandTotal(total);
     const GrandPercentage = (total / 234) * 100;
     setGrandPercentage(GrandPercentage);
+    useEffect(async()=>{  const userId=localStorage.getItem("id")
+    console.log(userId);
+    if(!userId){
+      router.push('/signup');
+    }
+    if(userId){
     const response = await axios.post('/api/quiz', {
       userId,
       score: total,
     });
-    console.log(response)
+    console.log(response)}
+  
+  },[])
+  
+  
+ 
 
     if (GrandPercentage > 60) {
       // toast.success('Successfully completed the generic skill test', {
