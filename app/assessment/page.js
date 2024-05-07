@@ -20,6 +20,12 @@ export default function Home() {
   const router = useRouter(); // corrected useRouter to router
   const [grandTotal, setGrandTotal] = useState(0);
   const [grandPercentage, setGrandPercentage] = useState(0);
+      const Id=localStorage.getItem("id");
+  const userId=Id
+    console.log(userId);
+    if(!userId){
+    router.push('/signup');
+  }
 
   
   
@@ -39,9 +45,8 @@ export default function Home() {
     setGrandTotal(total);
     const GrandPercentage = (total / 234) * 100;
     setGrandPercentage(GrandPercentage);
-    useEffect(async()=>{  
-      const userId=localStorage.getItem("id")
-    console.log(userId);
+
+  
  
     if(userId){
     const response = await axios.post('/api/quiz', {
@@ -49,11 +54,7 @@ export default function Home() {
       score: total,
     });
     console.log(response)}
-  
-  },[])
-  if(!userId){
-    router.push('/signup');
-  }
+
   
   
  
