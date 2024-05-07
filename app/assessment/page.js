@@ -20,8 +20,9 @@ export default function Home() {
   const router = useRouter(); // corrected useRouter to router
   const [grandTotal, setGrandTotal] = useState(0);
   const [grandPercentage, setGrandPercentage] = useState(0);
-  const userId=localStorage.getItem("id")
-  console.log(userId);
+  useEffect(()=>{  const userId=localStorage.getItem("id")
+  console.log(userId);},[])
+
   if(!userId){
     router.push('/signup');
   }
